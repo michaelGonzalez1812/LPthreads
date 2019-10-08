@@ -1,3 +1,5 @@
+#include <lpthread.h>
+
 int lthread_create() {
     //TODO: implement method
 }
