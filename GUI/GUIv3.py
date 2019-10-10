@@ -17,6 +17,7 @@ canvas0.pack()
 canvas1.pack()
 canvas2.pack()
 
+#rects
 global rect0
 global rect1
 global rect2
@@ -41,33 +42,24 @@ def read_file(filename, bandera, banda):
         #canvas rect
         if(tipo == 0):
             if(banda == 0):
-                #canvas0.delete(rect0)
-                rect0 = canvas0.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="blue")
+                canvas0.move(rect0,10,0)
             elif(banda == 1):
-                #canvas1.delete(rect1)
                 rect1 = canvas1.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="blue")
             else:
-                #canvas2.delete(rect2)
                 rect2 = canvas2.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="blue")
         elif(tipo == 1):
             if(banda == 0):
-                #canvas0.delete(rect0)
                 rect0 = canvas0.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="red")
             elif(banda == 1):
-                #canvas1.delete(rect1)
                 rect1 = canvas1.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="red")
             else:
-                #canvas1.delete(rect2)
                 rect2 = canvas1.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="red")
         else:
             if(banda == 0):
-                #canvas0.delete(rect0)
                 rect0 = canvas0.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="green")
             elif(banda == 1):
-                #canvas1.delete(rect1)
                 rect1 = canvas1.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="green")
             else:
-                #canvas2.delete(rect2)
                 rect2 = canvas2.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="green")
 
         #sleep
