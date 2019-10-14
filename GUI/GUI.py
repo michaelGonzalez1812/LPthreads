@@ -2,32 +2,70 @@ import time, threading,_thread
 from tkinter import *
 from tkinter import messagebox
 
-#main window
-mainWindow = Tk()
-mainWindow.geometry("500x500")
-mainWindow.title("Envio de Paquetes")
 
-#canvas
-canvas0 = Canvas(mainWindow, width=100, height=100)
-canvas1 = Canvas(mainWindow, width=100, height=100)
-canvas2 = Canvas(mainWindow, width=100, height=100)
+def movement(canvas): 
 
-#canvas position
-canvas0.pack()
-canvas1.pack()
-canvas2.pack()
+    rect00 = rect0
+    rect11 = rect1
+    rect22 = rect2
 
-global rect0
-global rect1
-global rect2
-rect0 = canvas0.create_rectangle(5, 5, 40, 25, fill="blue")
-rect1 = canvas1.create_rectangle(5, 5, 40, 25, fill="blue")
-rect2 = canvas2.create_rectangle(5, 5, 40, 25, fill="blue")
+    # Valor actual banda0
+    file_data = read_file("Bandas/Banda0.txt")
+    if(file_data[1] != file_data_init0[1]):
+        if(file_data[1] == 0):
+            if(file_data[0] == 0):
+                canvas0.itemconfig(rect00, fill='blue')
+                canvas0.coords(rect00,5, 5, 40, 25,)
+            elif(file_data[0] == 1):
+                canvas0.itemconfig(rect00, fill='red')
+                canvas0.coords(rect00,5, 5, 40, 25,)
+            else:
+                canvas0.itemconfig(rect00, fill='green')
+                canvas0.coords(rect00,5, 5, 40, 25,)   
+        else:    
+            canvas0.move(rect00, file_data[1], 0)
+            file_data_init0[1] = file_data[1]
 
-def read_file(filename, bandera, banda):
-    while(TRUE):
-        #lectura del archivo
-        f = open(filename, bandera)
+    # valor actual banda1
+    file_data = read_file("Bandas/Banda1.txt")
+    if(file_data[1] != file_data_init1[1]):
+        if(file_data[1] == 0):
+            if(file_data[0] == 0):
+                canvas1.itemconfig(rect11, fill='blue')
+                canvas1.coords(rect11,5, 5, 40, 25,)
+            elif(file_data[0] == 1):
+                canvas1.itemconfig(rect11, fill='red')
+                canvas1.coords(rect11,5, 5, 40, 25,)
+            else:
+                canvas1.itemconfig(rect11, fill='green')
+                canvas1.coords(rect11,5, 5, 40, 25,)  
+        else:    
+            canvas1.move(rect11, file_data[1], 0)
+            file_data_init1[1] = file_data[1]
+
+    # valor actual banda2
+    file_data = read_file("Bandas/Banda2.txt")
+    if(file_data[1] != file_data_init2[1]):
+        if(file_data[1] == 0):
+            if(file_data[0] == 0):
+                canvas1.itemconfig(rect22, fill='blue')
+                canvas1.coords(rect22,5, 5, 40, 25,)
+            elif(file_data[0] == 1):
+                canvas1.itemconfig(rect22, fill='red')
+                canvas1.coords(rect22,5, 5, 40, 25,)
+            else:
+                canvas1.itemconfig(rect22, fill='green')
+                canvas1.coords(rect22,5, 5, 40, 25,)  
+        else:    
+            canvas2.move(rect22, file_data[1], 0)
+            file_data_init2[1] = file_data[1]
+        
+    # llamda recursiva
+    canvas.after(10, movement, canvas) 
+    
+def read_file(filename):
+    #lectura del archivo
+        f = open(filename, "r")
         f.readline()
 
         # get de los valores [tipo,posicion]
@@ -37,46 +75,55 @@ def read_file(filename, bandera, banda):
 
         #cerrar el archivo
         f.close()
+        return [tipo,posicion]
 
-        #canvas rect
-        if(tipo == 0):
-            if(banda == 0):
-                #canvas0.delete(rect0)
-                rect0 = canvas0.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="blue")
-            elif(banda == 1):
-                #canvas1.delete(rect1)
-                rect1 = canvas1.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="blue")
-            else:
-                #canvas2.delete(rect2)
-                rect2 = canvas2.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="blue")
-        elif(tipo == 1):
-            if(banda == 0):
-                #canvas0.delete(rect0)
-                rect0 = canvas0.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="red")
-            elif(banda == 1):
-                #canvas1.delete(rect1)
-                rect1 = canvas1.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="red")
-            else:
-                #canvas1.delete(rect2)
-                rect2 = canvas1.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="red")
-        else:
-            if(banda == 0):
-                #canvas0.delete(rect0)
-                rect0 = canvas0.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="green")
-            elif(banda == 1):
-                #canvas1.delete(rect1)
-                rect1 = canvas1.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="green")
-            else:
-                #canvas2.delete(rect2)
-                rect2 = canvas2.create_rectangle(5+posicion, 5, 40+posicion, 25, fill="green")
+def crearRect(tipo, canvasTemp):
+    if(tipo == 0):
+        rectTemp = canvasTemp.create_rectangle(5, 5, 40, 25, fill="blue")
+    elif(tipo == 1):
+        rectTemp = canvasTemp.create_rectangle(5, 5, 40, 25, fill="red")
+    else:
+        rectTemp = canvasTemp.create_rectangle(5, 5, 40, 25, fill="green")
+    return rectTemp
 
-        #sleep
-        time.sleep(0.1)
 
-#thread
-_thread.start_new_thread( read_file,("Bandas/Banda0.txt","r",0) )
-_thread.start_new_thread( read_file,("Bandas/Banda1.txt","r",1) )
-_thread.start_new_thread( read_file,("Bandas/Banda2.txt","r",2) )
+#main window
+mainWindow = Tk()
+mainWindow.geometry("500x300")
+mainWindow.title("Envio de Paquetes")
+mainWindow.config(background='white')
+
+#canvas
+canvas0 = Canvas(mainWindow, width=500, height=100)
+canvas1 = Canvas(mainWindow, width=500, height=100)
+canvas2 = Canvas(mainWindow, width=500, height=100)
+
+#canvas position
+canvas0.pack()
+canvas1.pack()
+canvas2.pack()
+
+# load the .gif image file
+gif1 = PhotoImage(file="../Bandas/Banda.jpg")
+
+# put gif image on canvas
+canvas0.create_image(50, 10, image=gif1, anchor=NW)
+canvas1.create_image(50, 10, image=gif1, anchor=NW)
+canvas2.create_image(50, 10, image=gif1, anchor=NW)
+
+
+#valores iniciales de posición
+file_data_init0 = read_file("Bandas/Banda0.txt")
+file_data_init1 = read_file("Bandas/Banda1.txt")
+file_data_init2 = read_file("Bandas/Banda2.txt")
+
+#canvas rect
+rect0 = crearRect(file_data_init0[0], canvas0)
+rect1 = crearRect(file_data_init1[0], canvas1)
+rect2 = crearRect(file_data_init2[0], canvas2)
+
+#canvas move
+mainWindow.after(300, movement,canvas0)
 
 #loop window
 mainWindow.mainloop()

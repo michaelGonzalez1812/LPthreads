@@ -2,24 +2,41 @@ import time, threading,_thread
 from tkinter import *
 from tkinter import messagebox
 
-#main window
-mainWindow = Tk()
-mainWindow.geometry("500x500")
-mainWindow.title("Envio de Paquetes")
-
-#buttons
-global btn0
-global btn1
-global btn2
-btn0 = Button(mainWindow, bg="blue", width=10, height=2, command=quit).place(x=5, y=5)
-btn1 = Button(mainWindow, bg="red", width=10, height=2, command=quit).place(x=5, y=55)
-btn2 = Button(mainWindow, bg="green", width=10, height=2, command=quit).place(x=5, y=105)
-
-
-def read_file(filename, bandera, banda):
+def move_rect(rect, canvas):
     while(TRUE):
-        #lectura del archivo
-        f = open(filename, bandera)
+        # Valor actual banda0
+        file_data = read_file("Bandas/Banda0.txt")
+        if(file_data[1] != file_data_init0[1]):
+            if(file_data[1] == 10):
+                rect = crearRect(file_data_init0[0], canvas)
+                canvas.itemconfig(rect, fill='yellow')
+            else:    
+                canvas.move(rect, file_data[1], 0)
+                file_data_init0[1] = file_data[1]
+
+        # valor actual banda1
+        file_data = read_file("Bandas/Banda1.txt")
+        if(file_data[1] != file_data_init1[1]):
+            if(file_data[1] == 10):
+                rect = crearRect(file_data_init1[0], canvas)
+            else:    
+                canvas.move(rect, file_data[1], 0)
+                file_data_init1[1] = file_data[1]
+
+        # valor actual banda2
+        file_data = read_file("Bandas/Banda2.txt")
+        if(file_data[1] != file_data_init2[1]):
+            if(file_data[1] == 10):
+                rect = crearRect(file_data_init2[0], canvas)
+            else:    
+                canvas.move(rect, file_data[1], 0)
+                file_data_init2[1] = file_data[1]
+
+    
+    
+def read_file(filename):
+    #lectura del archivo
+        f = open(filename, "r")
         f.readline()
 
         # get de los valores [tipo,posicion]
@@ -29,46 +46,49 @@ def read_file(filename, bandera, banda):
 
         #cerrar el archivo
         f.close()
+        return [tipo,posicion]
 
-        #canvas rect
-        if(tipo == 0):
-            if(banda == 0):
-                (Button(btn0)).config(bg = "blue")
-                (Button(btn0)).place(x=posicion, y=5)
-            elif(banda == 1):
-                (Button(btn1)).config(bg = "blue")
-                (Button(btn1)).place(x=posicion, y=55)
-            else:
-                (Button(btn2)).config(bg = "blue")
-                (Button(btn2)).place(x=posicion, y=105)
-        elif(tipo == 1):
-            if(banda == 0):
-                (Button(btn0)).config(bg = "red")
-                (Button(btn0)).place(x=posicion, y=5)
-            elif(banda == 1):
-                (Button(btn1)).config(bg = "red")
-                (Button(btn1)).place(x=posicion, y=55)
-            else:
-                (Button(btn2)).config(bg = "red")
-                (Button(btn2)).place(x=posicion, y=105)
-        else:
-            if(banda == 0):
-                (Button(btn0)).config(bg = "green")
-                (Button(btn0)).place(x=posicion, y=5)
-            elif(banda == 1):
-                (Button(btn1)).config(bg = "green")
-                (Button(btn1)).place(x=posicion, y=55)
-            else:
-                (Button(btn2)).config(bg = "green")
-                (Button(btn2)).place(x=posicion, y=105)
 
-        #sleep
-        time.sleep(0.1)
+def crearRect(tipo, canvasTemp):
+    if(tipo == 0):
+        rectTemp = canvasTemp.create_rectangle(5, 5, 40, 25, fill="blue")
+    elif(tipo == 1):
+        rectTemp = canvasTemp.create_rectangle(5, 5, 40, 25, fill="red")
+    else:
+        rectTemp = canvasTemp.create_rectangle(5, 5, 40, 25, fill="green")
+    return rectTemp
 
-#thread
-_thread.start_new_thread( read_file,("Bandas/Banda0.txt","r",0) )
-_thread.start_new_thread( read_file,("Bandas/Banda1.txt","r",1) )
-_thread.start_new_thread( read_file,("Bandas/Banda2.txt","r",2) )
+#main window
+mainWindow = Tk()
+mainWindow.geometry("500x300")
+mainWindow.title("Envio de Paquetes")
+mainWindow.config(background='white')
+
+#canvas
+canvas0 = Canvas(mainWindow, width=500, height=100)
+canvas1 = Canvas(mainWindow, width=500, height=100)
+canvas2 = Canvas(mainWindow, width=500, height=100)
+
+#canvas position
+canvas0.pack()
+canvas1.pack()
+canvas2.pack()
+
+#canvas rect
+rect0 = crearRect(0, canvas0)
+rect1 = crearRect(1, canvas1)
+rect2 = crearRect(2, canvas2)
+
+#valores iniciales de posición
+file_data_init0 = read_file("Bandas/Banda0.txt")
+file_data_init1 = read_file("Bandas/Banda1.txt")
+file_data_init2 = read_file("Bandas/Banda2.txt")
+
+#threads
+_thread.start_new_thread( move_rect,(rect0, canvas0) )
+_thread.start_new_thread( move_rect,(rect1, canvas1) )
+_thread.start_new_thread( move_rect,(rect2, canvas2) )
+
 
 #loop window
 mainWindow.mainloop()
