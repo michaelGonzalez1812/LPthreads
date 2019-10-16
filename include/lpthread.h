@@ -1,12 +1,42 @@
-int lthread_create();
+/*************************************************************
+ * Tecnológico de Costa Rica
+ * Conceptos básicos de Sistemas Operativos
+ * Athors:
+ *      Michael Gonzalez Rivera
+ *      Erick Cordero Rojas
+ *      Victor Montero
+ * 
+ * Description:
+ *      This library implements basics methods to creation
+ *      and manipulation of linux kernel threads
+ * ***********************************************************/
 
-int lthread_end();
+/*************************************************************
+ * Description:
+ *      Create new thread
+ * Parameters:
+ *      start_routine -> method wich will run on the thread
+ *      arg -> Arguments to the start_routine
+ * return:
+ *      new thread id
+ * ***********************************************************/
+int lpthread_create(int (*start_routine) (void *), char *arg);
 
-int ltrhread_yield();
+int lpthread_end();
 
-int lthread_join();
+int lptrhread_yield();
 
-int lthread_detach();
+/*************************************************************
+ * Description:
+ *      Wait for the exit of a thread
+ * Parameters:
+ *      lpthread_id -> ID of the thread to wait
+ * return:
+ *      Status of the exiting thread
+ * ***********************************************************/
+int lpthread_join(int lpthread_id);
+
+int lpthread_detach();
 
 int lmutex_init();
 
