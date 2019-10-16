@@ -10,6 +10,14 @@
  *      This library implements basics methods to creation
  *      and manipulation of linux kernel threads
  * ***********************************************************/
+#ifndef LPTHREAD_H
+#define LPTHREAD_H
+
+#define _GNU_SOURCE
+#include <sys/wait.h>
+#include <sched.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /*************************************************************
  * Description:
@@ -38,10 +46,4 @@ int lpthread_join(int lpthread_id);
 
 int lpthread_detach();
 
-int lmutex_init();
-
-int lmutex_destroy();
-
-int lmutex_unlock();
-
-int lmutex_trylock();
+#endif

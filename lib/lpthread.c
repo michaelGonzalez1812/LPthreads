@@ -12,13 +12,6 @@
 
 #include <lpthread.h>
 
-#define _GNU_SOURCE
-#include <sys/wait.h>
-#include <sched.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-
 int lpthread_create(int (*start_routine) (void *), char *arg) {
     int lpthread_id = 0;
 
@@ -67,21 +60,5 @@ int lpthread_join(int lpthread_id) {
 }
 
 int lpthread_detach() {
-    //TODO: implement method
-}
-
-int lmutex_init() {
-    //TODO: implement method
-}
-
-int lmutex_destroy() {
-    //TODO: implement method
-}
-
-int lmutex_unlock() {
-    //TODO: implement method
-}
-
-int lmutex_trylock() {
     //TODO: implement method
 }
