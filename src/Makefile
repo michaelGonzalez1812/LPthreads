@@ -1,2 +1,2 @@
 main:
-	gcc -o bin/transporter src/main.c -Llib -Iinclude -llpthread
+	gcc -o bin/transporter src/transporter.c -Llib -Iinclude -llpthread
