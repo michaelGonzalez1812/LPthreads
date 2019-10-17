@@ -1,4 +1,9 @@
-all: create-join
+all: create-join mutex_test
 
-create-join:
-	gcc -o unit-test/build/create-join unit-test/lpthread/create-join.c -Llib -Iinclude -llpthread
+flags = -Llib -Iinclude -llpthread -llpthread_mutex -g
+
+create-join: unit-test/lpthread/create-join.c
+	gcc -o unit-test/build/create-join unit-test/lpthread/create-join.c $(flags)
+
+mutex_test: unit-test/lpthread/mutex_test.c
+	gcc -o unit-test/build/mutex_test unit-test/lpthread/mutex_test.c $(flags)

@@ -10,18 +10,21 @@
  *      Implementation of lpthread_mutex library
  * ***********************************************************/
 
-int lmutex_init() {
-    //TODO: implement method
+#include <lpthread_mutex.h>
+
+void lmutex_init(lpthread_mutex **mutex) {
+    *mutex = (lpthread_mutex*) malloc(sizeof(lpthread_mutex));
+    atomic_flag_clear(mutex);
 }
 
-int lmutex_destroy() {
-    //TODO: implement method
+void lmutex_destroy(lpthread_mutex *mutex) {
+    free((void*) mutex);
 }
 
-int lmutex_unlock() {
-    //TODO: implement method
+void lmutex_unlock(lpthread_mutex *mutex) {
+    atomic_flag_clear(mutex);
 }
 
-int lmutex_trylock() {
-    //TODO: implement method
+void lmutex_trylock(lpthread_mutex *mutex) {
+    while (atomic_flag_test_and_set(mutex) == true);
 }
