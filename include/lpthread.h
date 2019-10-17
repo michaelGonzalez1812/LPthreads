@@ -32,7 +32,16 @@ int lpthread_create(int (*start_routine) (void *), char *arg);
 
 int lpthread_end();
 
-int lptrhread_yield();
+/*************************************************************
+ * Description:
+ *      yield the processor
+ * Parameters:
+ *      
+ * return:
+ *      On success, lpthread_yield() returns 0.  On error, 
+ *      -1 is returned, and errno is set appropriately.
+ * ***********************************************************/
+int lpthread_yield();
 
 /*************************************************************
  * Description:

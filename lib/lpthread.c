@@ -42,8 +42,8 @@ int lpthread_end() {
     //TODO: implement method
 }
 
-int lptrhread_yield() {
-    //TODO: implement method
+int lpthread_yield() {
+    return sched_yield();
 }
 
 int lpthread_join(int lpthread_id) {
