@@ -1,3 +1,4 @@
 bin/
 lib/*.a
 lib/*.o
+unit-test/build/*
