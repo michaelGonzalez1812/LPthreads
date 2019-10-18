@@ -1,4 +1,4 @@
-all: create-join mutex_test yield_test
+all: create-join mutex_test yield_test end_test
 
 flags = -Llib -Iinclude -llpthread -llpthread_mutex -g
 
@@ -10,3 +10,6 @@ mutex_test: unit-test/lpthread/mutex_test.c
 
 yield_test: unit-test/lpthread/yield_test.c
 	gcc -o unit-test/build/yield_test unit-test/lpthread/yield_test.c $(flags)
+
+end_test: unit-test/lpthread/end_test.c
+	gcc -o unit-test/build/end_test unit-test/lpthread/end_test.c $(flags)

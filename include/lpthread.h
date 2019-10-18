@@ -17,6 +17,7 @@
 #include <sys/wait.h>
 #include <sched.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 
 /*************************************************************
@@ -30,6 +31,15 @@
  * ***********************************************************/
 int lpthread_create(int (*start_routine) (void *), char *arg);
 
+/*************************************************************
+ * Description:
+ *      Exit caller thread
+ * Parameters:
+ *      start_routine -> method wich will run on the thread
+ *      arg -> Arguments to the start_routine
+ * return:
+ *      new thread id
+ * ***********************************************************/
 int lpthread_end();
 
 /*************************************************************

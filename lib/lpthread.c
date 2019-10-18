@@ -39,7 +39,7 @@ int lpthread_create(int (*start_routine) (void *), char *arg) {
 }
 
 int lpthread_end() {
-    //TODO: implement method
+    _exit(0);
 }
 
 int lpthread_yield() {
