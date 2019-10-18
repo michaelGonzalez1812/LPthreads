@@ -15,13 +15,23 @@ def movement(canvas):
         if(file_data[1] == 0):
             if(file_data[0] == 0):
                 canvas0.itemconfig(rect00, fill='blue')
-                canvas0.coords(rect00,5, 5, 40, 25,)
+                canvas0.coords(rect00,5, 5, 40, 25)
             elif(file_data[0] == 1):
                 canvas0.itemconfig(rect00, fill='red')
-                canvas0.coords(rect00,5, 5, 40, 25,)
+                canvas0.coords(rect00,5, 5, 40, 25)
             else:
                 canvas0.itemconfig(rect00, fill='green')
-                canvas0.coords(rect00,5, 5, 40, 25,)   
+                canvas0.coords(rect00,5, 5, 40, 25)   
+        elif(file_data[1] == 7):
+            if(file_data[0] == 0):
+                canvas0.itemconfig(rect00, fill='blue')
+                canvas0.coords(rect00,285, 5, 40, 25)
+            elif(file_data[0] == 1):
+                canvas0.itemconfig(rect00, fill='red')
+                canvas0.coords(rect00,285, 5, 40, 25)
+            else:
+                canvas0.itemconfig(rect00, fill='green')
+                canvas0.coords(rect00,285, 5, 40, 25) 
         else:    
             canvas0.move(rect00, file_data[1], 0)
             file_data_init0[1] = file_data[1]
@@ -32,13 +42,23 @@ def movement(canvas):
         if(file_data[1] == 0):
             if(file_data[0] == 0):
                 canvas1.itemconfig(rect11, fill='blue')
-                canvas1.coords(rect11,5, 5, 40, 25,)
+                canvas1.coords(rect11,5, 5, 40, 25)
             elif(file_data[0] == 1):
                 canvas1.itemconfig(rect11, fill='red')
-                canvas1.coords(rect11,5, 5, 40, 25,)
+                canvas1.coords(rect11,5, 5, 40, 25)
             else:
                 canvas1.itemconfig(rect11, fill='green')
-                canvas1.coords(rect11,5, 5, 40, 25,)  
+                canvas1.coords(rect11,5, 5, 40, 25)  
+        elif(file_data[1] == 7):
+            if(file_data[0] == 0):
+                canvas0.itemconfig(rect00, fill='blue')
+                canvas0.coords(rect00,285, 5, 40, 25)
+            elif(file_data[0] == 1):
+                canvas0.itemconfig(rect00, fill='red')
+                canvas0.coords(rect00,285, 5, 40, 25)
+            else:
+                canvas0.itemconfig(rect00, fill='green')
+                canvas0.coords(rect00,285, 5, 40, 25) 
         else:    
             canvas1.move(rect11, file_data[1], 0)
             file_data_init1[1] = file_data[1]
@@ -49,13 +69,23 @@ def movement(canvas):
         if(file_data[1] == 0):
             if(file_data[0] == 0):
                 canvas1.itemconfig(rect22, fill='blue')
-                canvas1.coords(rect22,5, 5, 40, 25,)
+                canvas1.coords(rect22,5, 5, 40, 25)
             elif(file_data[0] == 1):
                 canvas1.itemconfig(rect22, fill='red')
-                canvas1.coords(rect22,5, 5, 40, 25,)
+                canvas1.coords(rect22,5, 5, 40, 25)
             else:
                 canvas1.itemconfig(rect22, fill='green')
-                canvas1.coords(rect22,5, 5, 40, 25,)  
+                canvas1.coords(rect22,5, 5, 40, 25) 
+        elif(file_data[1] == 7):
+            if(file_data[0] == 0):
+                canvas0.itemconfig(rect00, fill='blue')
+                canvas0.coords(rect00,285, 5, 40, 25)
+            elif(file_data[0] == 1):
+                canvas0.itemconfig(rect00, fill='red')
+                canvas0.coords(rect00,285, 5, 40, 25)
+            else:
+                canvas0.itemconfig(rect00, fill='green')
+                canvas0.coords(rect00,285, 5, 40, 25)  
         else:    
             canvas2.move(rect22, file_data[1], 0)
             file_data_init2[1] = file_data[1]
@@ -104,12 +134,12 @@ canvas1.pack()
 canvas2.pack()
 
 # load the .gif image file
-gif1 = PhotoImage(file="../Bandas/Banda.jpg")
+#gif1 = PhotoImage(file="../Bandas/Banda.jpg")
 
 # put gif image on canvas
-canvas0.create_image(50, 10, image=gif1, anchor=NW)
-canvas1.create_image(50, 10, image=gif1, anchor=NW)
-canvas2.create_image(50, 10, image=gif1, anchor=NW)
+#canvas0.create_image(50, 10, image=gif1, anchor=NW)
+#canvas1.create_image(50, 10, image=gif1, anchor=NW)
+#canvas2.create_image(50, 10, image=gif1, anchor=NW)
 
 
 #valores iniciales de posición
