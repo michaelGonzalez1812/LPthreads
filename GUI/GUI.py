@@ -1,3 +1,15 @@
+'''/*************************************************************
+ * Tecnológico de Costa Rica
+ * Conceptos básicos de Sistemas Operativos
+ * Athors:
+ *      Michael Gonzalez Rivera
+ *      Erick Cordero Rojas
+ *      Victor Montero
+ * 
+ * Description:
+ *      GUI aplication
+ * ***********************************************************/'''
+ 
 import time, threading,_thread
 from tkinter import *
 from tkinter import messagebox

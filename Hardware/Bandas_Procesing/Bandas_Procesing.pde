@@ -1,3 +1,15 @@
+/*************************************************************
+ * Tecnológico de Costa Rica
+ * Conceptos básicos de Sistemas Operativos
+ * Athors:
+ *      Michael Gonzalez Rivera
+ *      Erick Cordero Rojas
+ *      Victor Montero
+ * 
+ * Description:
+ *      Hardware file processing
+ * ***********************************************************/
+ 
 import processing.serial.*;
 import java.io.*;
 int mySwitch=0;
@@ -14,7 +26,7 @@ void setup(){
    
    //Open the serial port for communication with the Arduino
    //Make sure the COM port is correct
-   myPort = new Serial(this, "COM6", 9600);
+   myPort = new Serial(this, "/dev/ttyACM0", 9600);
    myPort.bufferUntil('\n');
 }
 
@@ -22,7 +34,7 @@ void draw() {
    if (mySwitch>0){
      /*The readData function can be found later in the code.
      This is the call to read a CSV file on the computer hard-drive. */
-     readData("D:/mySensorData.txt");
+     readData("/TEC/Operativos/Proyecto1/LPthreads/Bandas/BandaTest.txt");
      
      /*The following switch prevents continuous reading of the text file, until
      we are ready to read the file again. */
@@ -36,7 +48,7 @@ void draw() {
      sent to turn the LED off : myPort.write('0'); */
      myPort.write(subtext[counter]);
      delay(500);
-     myPort.write('0');
+     myPort.write('9');
      delay(100);
      //Increment the counter so that the next number is sent to the arduino.
      counter++;
