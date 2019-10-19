@@ -12,9 +12,27 @@
 
 #include <lpthread.h>
 
+#include <band.h>
+
+#define NUM_BANDS 3
+
 int main(int argc, char** argv) {
 
-    //TODO: Not implemented yet
+    printf("init...\n");
+    
+    band_t *bands = malloc(3*sizeof(band_t));
+    int thread_ids[NUM_BANDS];
+    int bands_count = 0;
+
+    for (int i = 0; i <= NUM_BANDS; i++) {
+        band_init(&bands[i], FIFO_SCHE, &bands_count);
+        thread_ids[i] = lpthread_create(do_in_background, (char*) &bands[i]);
+    }
+
+    for (int i = 0; i <= NUM_BANDS; i++)
+        lpthread_join(thread_ids[i]);
+
+    printf("exiting...\n\n");
 
     return 0;
 }

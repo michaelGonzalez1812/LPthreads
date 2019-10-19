@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
   char *buf  = (char*) malloc (100*sizeof(char));
   strcpy(buf, "hello from parent");
   
-  int lpthread_id = lpthread_create(child_func,  buf);
+  int lpthread_id = lpthread_create(child_func, buf);
   int status = lpthread_join(lpthread_id);
 
   printf("Child exited with status %d. buf = \"%s\"\n", status, buf);
