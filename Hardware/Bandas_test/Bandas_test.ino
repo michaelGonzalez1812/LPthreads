@@ -2,18 +2,13 @@
 signals from a computer to turn on/off 1-9 LEDs */
 
 void setup() { 
- // initialize the digital pins as an output.
- pinMode(2, OUTPUT);
- pinMode(3, OUTPUT);
- pinMode(4, OUTPUT);
- pinMode(5, OUTPUT);
- pinMode(6, OUTPUT);
- pinMode(7, OUTPUT);
- pinMode(8, OUTPUT);
- pinMode(9, OUTPUT);
- pinMode(10, OUTPUT);
-// Turn the Serial Protocol ON
- Serial.begin(9600);
+  // initialize the digital pins as an output.
+  {   
+    for (int j=2; j<19; j++)
+    pinMode(j, OUTPUT);
+  }
+  // Turn the Serial Protocol ON
+  Serial.begin(9600);
 }
 
 void loop() {
