@@ -13,10 +13,9 @@
 import processing.serial.*;
 import java.io.*;
 int mySwitch=0;
+
 int counter=0;
-String [] subtext0;
-String [] subtext1;
-String [] subtext2;
+String [] subtext;
 Serial myPort;
 
 
@@ -37,20 +36,27 @@ void draw() {
      if (mySwitch>0){
        /*The readData function can be found later in the code.
        This is the call to read a CSV file on the computer hard-drive. */
-       subtext0 = readData("/home/e3r8ick/TEC/Operativos/Proyecto1/LPthreads/Bandas/Banda0.txt");
-       subtext1 = readData("/home/e3r8ick/TEC/Operativos/Proyecto1/LPthreads/Bandas/Banda1.txt");
-       subtext2 = readData("/home/e3r8ick/TEC/Operativos/Proyecto1/LPthreads/Bandas/Banda2.txt");
+       readData("/home/e3r8ick/TEC/Operativos/Proyecto1/LPthreads/Bandas/Banda0.txt");
        
-       //write in the arduino
-       //BandaId , Type , Position & BandaId , Type , Position & BandaId , Type , Position
-       System.out.println("0,"+subtext0[0]+","+subtext0[1]+"&"+"1,"+subtext1[0]+","+subtext1[1]+"&"+"2,"+subtext2[0]+","+subtext2[1]);
-       myPort.write("0,"+subtext0[0]+subtext0[1]+"&"+"1,"+subtext1[0]+subtext1[1]+"&"+"2,"+subtext2[0]+subtext2[1]);
        /*The following switch prevents continuous reading of the text file, until
        we are ready to read the file again. */
        mySwitch=0;
-     }else{
+     }
+     /*Only send new data. This IF statement will allow new data to be sent to
+     the arduino. */
+     if(counter<subtext.length){
+       /* Write the next number to the Serial port and send it to the Arduino 
+       There will be a delay of half a second before the command is
+       sent to turn the LED off : myPort.write('0'); */
+       myPort.write(subtext[counter]);
+       delay(500);
+       myPort.write('9');
+       delay(100);
+       //Increment the counter so that the next number is sent to the arduino.
+       counter++;
+     } else{
        //If the text file has run out of numbers, then read the text file again in 5 seconds.
-       delay(10);
+       delay(5000);
        mySwitch=1;
      }
   }
@@ -58,11 +64,10 @@ void draw() {
 
 
 /* The following function will read from a CSV or TXT file */
-String[] readData(String myFileName){
+void readData(String myFileName){
  
    File file=new File(myFileName);
    BufferedReader br=null;
-   String[] subtext = {};
    
    try{
      br=new BufferedReader(new FileReader(file));
@@ -73,6 +78,7 @@ String[] readData(String myFileName){
      /* Spilt each line up into bits and pieces using a comma as a separator */
      subtext = splitTokens(text,",");
      }
+   System.out.println(subtext[0]+subtext[1]);
    }catch(FileNotFoundException e){
      e.printStackTrace();
    }catch(IOException e){
@@ -86,5 +92,4 @@ String[] readData(String myFileName){
        e.printStackTrace();
      }
    }
-   return subtext;
 }
