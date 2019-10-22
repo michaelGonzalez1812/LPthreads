@@ -24,83 +24,44 @@ def movement(canvas):
     # Valor actual banda0
     file_data = read_file("Bandas/Banda0.txt")
     if(file_data[1] != file_data_init0[1]):
-        if(file_data[1] == 0):
-            if(file_data[0] == 0):
-                canvas0.itemconfig(rect00, fill='blue')
-                canvas0.coords(rect00,5, 5, 40, 25)
-            elif(file_data[0] == 1):
-                canvas0.itemconfig(rect00, fill='red')
-                canvas0.coords(rect00,5, 5, 40, 25)
-            else:
-                canvas0.itemconfig(rect00, fill='green')
-                canvas0.coords(rect00,5, 5, 40, 25)   
-        elif(file_data[1] == 7):
-            if(file_data[0] == 0):
-                canvas0.itemconfig(rect00, fill='blue')
-                canvas0.coords(rect00,285, 5, 40, 25)
-            elif(file_data[0] == 1):
-                canvas0.itemconfig(rect00, fill='red')
-                canvas0.coords(rect00,285, 5, 40, 25)
-            else:
-                canvas0.itemconfig(rect00, fill='green')
-                canvas0.coords(rect00,285, 5, 40, 25) 
-        else:    
-            canvas0.move(rect00, file_data[1], 0)
-            file_data_init0[1] = file_data[1]
+        if(file_data[0] == 0):
+            canvas0.itemconfig(rect00, fill='blue')
+            canvas0.coords(rect00,file_data[1], 5, file_data[1]+40, 25)
+        elif(file_data[0] == 1):
+            canvas0.itemconfig(rect00, fill='red')
+            canvas0.coords(rect00,file_data[1], 5, file_data[1]+40, 25)
+        else:
+            canvas0.itemconfig(rect00, fill='green')
+            canvas0.coords(rect00,file_data[1], 5, file_data[1]+40, 25)   
+        file_data_init0[1] = file_data[1]
 
     # valor actual banda1
     file_data = read_file("Bandas/Banda1.txt")
     if(file_data[1] != file_data_init1[1]):
-        if(file_data[1] == 0):
-            if(file_data[0] == 0):
-                canvas1.itemconfig(rect11, fill='blue')
-                canvas1.coords(rect11,5, 5, 40, 25)
-            elif(file_data[0] == 1):
-                canvas1.itemconfig(rect11, fill='red')
-                canvas1.coords(rect11,5, 5, 40, 25)
-            else:
-                canvas1.itemconfig(rect11, fill='green')
-                canvas1.coords(rect11,5, 5, 40, 25)  
-        elif(file_data[1] == 7):
-            if(file_data[0] == 0):
-                canvas0.itemconfig(rect00, fill='blue')
-                canvas0.coords(rect00,285, 5, 40, 25)
-            elif(file_data[0] == 1):
-                canvas0.itemconfig(rect00, fill='red')
-                canvas0.coords(rect00,285, 5, 40, 25)
-            else:
-                canvas0.itemconfig(rect00, fill='green')
-                canvas0.coords(rect00,285, 5, 40, 25) 
-        else:    
-            canvas1.move(rect11, file_data[1], 0)
-            file_data_init1[1] = file_data[1]
+        if(file_data[0] == 0):
+            canvas1.itemconfig(rect11, fill='blue')
+            canvas1.coords(rect00,file_data[1], 5, file_data[1]+40, 25)
+        elif(file_data[0] == 1):
+            canvas1.itemconfig(rect11, fill='red')
+            canvas1.coords(rect00,file_data[1], 5, file_data[1]+40, 25)
+        else:
+            canvas1.itemconfig(rect11, fill='green')
+            canvas1.coords(rect00,file_data[1], 5, file_data[1]+40, 25)   
+        file_data_init0[1] = file_data[1]
 
     # valor actual banda2
     file_data = read_file("Bandas/Banda2.txt")
     if(file_data[1] != file_data_init2[1]):
-        if(file_data[1] == 0):
-            if(file_data[0] == 0):
-                canvas1.itemconfig(rect22, fill='blue')
-                canvas1.coords(rect22,5, 5, 40, 25)
-            elif(file_data[0] == 1):
-                canvas1.itemconfig(rect22, fill='red')
-                canvas1.coords(rect22,5, 5, 40, 25)
-            else:
-                canvas1.itemconfig(rect22, fill='green')
-                canvas1.coords(rect22,5, 5, 40, 25) 
-        elif(file_data[1] == 7):
-            if(file_data[0] == 0):
-                canvas0.itemconfig(rect00, fill='blue')
-                canvas0.coords(rect00,285, 5, 40, 25)
-            elif(file_data[0] == 1):
-                canvas0.itemconfig(rect00, fill='red')
-                canvas0.coords(rect00,285, 5, 40, 25)
-            else:
-                canvas0.itemconfig(rect00, fill='green')
-                canvas0.coords(rect00,285, 5, 40, 25)  
-        else:    
-            canvas2.move(rect22, file_data[1], 0)
-            file_data_init2[1] = file_data[1]
+        if(file_data[0] == 0):
+            canvas2.itemconfig(rect22, fill='blue')
+            canvas2.coords(rect22,file_data[1], 5, file_data[1]+40, 25)
+        elif(file_data[0] == 1):
+            canvas2.itemconfig(rect22, fill='red')
+            canvas2.coords(rect22,file_data[1], 5, file_data[1]+40, 25)
+        else:
+            canvas2.itemconfig(rect22, fill='green')
+            canvas2.coords(rect22,file_data[1], 5, file_data[1]+40, 25)   
+        file_data_init0[1] = file_data[1]
         
     # llamda recursiva
     canvas.after(10, movement, canvas) 
@@ -113,7 +74,7 @@ def read_file(filename):
         # get de los valores [tipo,posicion]
         values = (f.readline()).split(",")
         tipo = int(values[0])
-        posicion = (int(values[1]))*10
+        posicion = (int(values[1]))*50
 
         #cerrar el archivo
         f.close()

@@ -35,9 +35,8 @@ void loop() {
     byte size = Serial.readBytes(input, INPUT_SIZE);
     // Add the final 0 to end the C string
     input[size] = 0;
-                
+    
     // Read each command pair 
-    Serial.println(input);
     char* command = strtok(input, "&");
     while (command != 0)
     {
@@ -71,98 +70,95 @@ void loop() {
     
            if(bandId == 0){
               if(type == 0){
-                //turn off previous 
-                digitalWrite(8, LOW);     //apagamos la columna 2
-                digitalWrite((position+8), HIGH);
                 //turn on
                 digitalWrite(9, HIGH);     //Levantamos la columna 1
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+                //turn off
+                delay(500);
+                digitalWrite(9, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
               }
-              if(type == 1){
-                //turn off previous 
-                digitalWrite(9, LOW);     //apagamos la columna 1
-                digitalWrite((position+8), HIGH);
+              else if(type == 1){
                 //turn on
                 digitalWrite(8, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+               //turn off
+                delay(500);
+                digitalWrite(8, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
               }
-              else{
-                //turn off previous 
-                digitalWrite((position+8), HIGH);
+              else if(type == 2){
                 //turn on
                 digitalWrite(9, HIGH);     //Levantamos la columna 1
                 digitalWrite(8, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+                //turn off
+                delay(500);
+                digitalWrite(8, LOW);     //Levantamos la columna 1
+                digitalWrite(9, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
+                
               }
            }
            else if(bandId == 1){
                 if(type == 0){
-                //turn off previous 
-                digitalWrite(5, LOW);     //apagamos la columna 2
-                digitalWrite((position+8), HIGH);
                 //turn on
                 digitalWrite(6, HIGH);     //Levantamos la columna 1
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+                //turn off
+                delay(500);
+                digitalWrite(6, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
               }
-              if(type == 1){
-                //turn off previous 
-                digitalWrite(6, LOW);     //apagamos la columna 1
-                digitalWrite((position+8), HIGH);
+              else if(type == 1){
                 //turn on
                 digitalWrite(5, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+                //turn off
+                delay(500);
+                digitalWrite(5, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
               }
-              else{
-                //turn off previous 
-                digitalWrite((position+8), HIGH);
-                //turn on
+              else if(type == 2){
                 digitalWrite(6, HIGH);     //Levantamos la columna 1
                 digitalWrite(5, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+                //turn off
+                delay(500);
+                digitalWrite(5, LOW);     //Levantamos la columna 1
+                digitalWrite(6, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
               }
            }
-           else{
-                if(type == 0){
-                //turn off previous 
-                digitalWrite(2, LOW);     //apagamos la columna 2
-                digitalWrite((position+8), HIGH);
+           else if(bandId == 2){
+               if(type == 0){
                 //turn on
                 digitalWrite(3, HIGH);     //Levantamos la columna 1
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+                //turn off
+                delay(500);
+                digitalWrite(3, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
               }
-              if(type == 1){
-                //turn off previous 
-                digitalWrite(3, LOW);     //apagamos la columna 1
-                digitalWrite((position+8), HIGH);
+              else if(type == 1){
                 //turn on
                 digitalWrite(2, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+                //turn off
+                delay(500);
+                digitalWrite(2, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
               }
-              else{
-                //turn off previous 
-                digitalWrite((position+8), HIGH);
+              else if(type == 2){
                 //turn on
                 digitalWrite(3, HIGH);     //Levantamos la columna 1
                 digitalWrite(2, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
-                //turn off next
-                digitalWrite((position+10), HIGH);
+                //turn off
+                delay(500);
+                digitalWrite(3, LOW);     //Levantamos la columna 1
+                digitalWrite(2, LOW);     //Levantamos la columna 1
+                digitalWrite((position+9), HIGH); // set the LED on
               }
            }
         }
