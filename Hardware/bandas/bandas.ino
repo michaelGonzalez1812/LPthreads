@@ -19,7 +19,7 @@ void setup() {
   // Turn the Serial Protocol ON
   Serial.begin(9600);
 
-  for (int k= 9 ; k<18 ; k++){
+  for (int k= 10 ; k<18 ; k++){
      digitalWrite(k, LOW);   //Encendemos el punto
      digitalWrite(k, HIGH);  //Apagamos el punto
   }

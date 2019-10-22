@@ -4,10 +4,10 @@ from tkinter import messagebox
 
 
 def test():
-    cont = 0
-    cont1 = 1
-    cont2 = 2
-    cont3 = 3
+    cont = 1
+    cont1 = 0
+    cont2 = 1
+    cont3 = 2
     while(TRUE):
         if(cont >= 8):
             cont = 0
@@ -15,21 +15,19 @@ def test():
         f = open("../Bandas/Banda0.txt", "w")
         f.write("#tipo,posicion,\n"+str(cont1)+","+str(cont))
         f.close()
-        time.sleep(0.2)
-
-        # archivo 1
-        cont = random.randint(0,9)
-        f = open("../Bandas/Banda1.txt", "w")
-        f.write("#tipo,posicion,\n"+str(cont2)+","+str(cont))
-        f.close()
-        time.sleep(0.5)
-
-        # archivo 1
-        cont = random.randint(0,9)
-        f = open("../Bandas/Banda2.txt", "w")
-        f.write("#tipo,posicion,\n"+str(cont3)+","+str(cont))
-        f.close()
         time.sleep(1)
+
+        # archivo 1
+        f = open("../Bandas/Banda1.txt", "w")
+        f.write("#tipo,posicion,\n"+str(cont2)+","+str(cont+1))
+        f.close()
+        time.sleep(1.5)
+
+        # archivo 1
+        f = open("../Bandas/Banda2.txt", "w")
+        f.write("#tipo,posicion,\n"+str(cont3)+","+str(cont+2))
+        f.close()
+        time.sleep(1.2)
         cont += 1
 
 test() 

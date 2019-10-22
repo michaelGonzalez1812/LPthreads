@@ -33,7 +33,7 @@ void setup(){
 }
 
 void draw() {
-  while(true){
+  //while(true){
      if (mySwitch>0){
        /*The readData function can be found later in the code.
        This is the call to read a CSV file on the computer hard-drive. */
@@ -44,16 +44,17 @@ void draw() {
        //write in the arduino
        //BandaId , Type , Position & BandaId , Type , Position & BandaId , Type , Position
        System.out.println("0,"+subtext0[0]+","+subtext0[1]+"&"+"1,"+subtext1[0]+","+subtext1[1]+"&"+"2,"+subtext2[0]+","+subtext2[1]);
-       myPort.write("0,"+subtext0[0]+subtext0[1]+"&"+"1,"+subtext1[0]+subtext1[1]+"&"+"2,"+subtext2[0]+subtext2[1]);
+       myPort.write("0,"+subtext0[0]+","+subtext0[1]+"&"+"1,"+subtext1[0]+","+subtext1[1]+"&"+"2,"+subtext2[0]+","+subtext2[1]);
        /*The following switch prevents continuous reading of the text file, until
        we are ready to read the file again. */
        mySwitch=0;
+       delay(200);
      }else{
        //If the text file has run out of numbers, then read the text file again in 5 seconds.
-       delay(10);
+       delay(500);
        mySwitch=1;
      }
-  }
+  //}
 } 
 
 

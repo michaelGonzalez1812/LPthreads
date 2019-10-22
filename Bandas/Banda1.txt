@@ -1,2 +1,2 @@
 #tipo,posicion,
-2,7
+1,7
