@@ -19,9 +19,10 @@
  * Scheduling types
  * *********************************/
 #define ROUND_ROBIN_SCHE 0
-#define SJF_SCHE         1  //shortest job first
-#define FIFO_SCHE        2
-#define RT_SCHE          3   //Real time
+#define PRIORIRY_SCHE    1
+#define SJF_SCHE         2  //shortest job first
+#define FIFO_SCHE        3
+#define RT_SCHE          4   //Real time
 
 typedef struct {
     int count;

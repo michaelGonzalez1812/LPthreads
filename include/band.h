@@ -31,9 +31,20 @@
  * Scheduling types
  * *********************************/
 #define ROUND_ROBIN_SCHE 0
-#define SJF_SCHE         1  //shortest job first
-#define FIFO_SCHE        2
-#define RT_SCHE          3   //Real time
+#define PRIORIRY_SCHE    1
+#define SJF_SCHE         2  //shortest job first
+#define FIFO_SCHE        3
+#define RT_SCHE          4   //Real time
+
+/***********************************
+ * Flux type // may not be required
+ * *********************************/
+// #define SIGN        0   //"letrero" The side of package flux defined by a special time variable that switches at a specific time
+// #define W           1   //an amount W of packages are carried before switching the flux side
+// #define RANDOM      2   //each time a 50/50 random decides de flux
+
+
+
 
 #define INITIAL_queue_SIZE 20
 
@@ -49,11 +60,13 @@ typedef struct
     int left_pkgs_count;
     int right_pkgs_count;
     bool on;
+    int dir; //direction to move the pkg
+    int flux_type;
 } band_t;
 
 /*************************************************************
  * Description:
- *      move a package from one site to another
+ *      move a package from one side to another
  * Parameters:
  *      pkg -> pkg to mov
  *      dir -> Direction to move the pkg
@@ -61,14 +74,6 @@ typedef struct
  * ***********************************************************/
 void mov_package(package_t *pkg, int dir);
 
-/*************************************************************
- * Description:
- *      Create new packages
- * Parameters:
- * return:
- *      Ptr to the array of new packages
- * ***********************************************************/
-package_t* generate_pkgs(int *pkg_counter);
 
 /*************************************************************
  * Description:
@@ -88,7 +93,7 @@ int do_in_background(void *arg);
  * return:
  *      
  * ***********************************************************/
-void turn_of_band(band_t *pkg);
+void turn_off_band(band_t *pkg);
 
 /*************************************************************
  * Description:
@@ -101,14 +106,14 @@ void band_init(band_t *band, int sche, int *bands_count);
 
 /*************************************************************
  * Description:
- *      choose direction to move the pkg
+ *      get direction to move the pkg
  * Parameters:
  *      
  * return:
  *      0 -> LEFT_TO_RIGHT
  *      1 -> RIGHT_TO_LEFT
  * ***********************************************************/
-int get_dir();
+int get_dir(band_t *band);
 
 /*************************************************************
  * Description:

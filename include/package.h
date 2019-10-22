@@ -22,7 +22,7 @@
 
 typedef struct {
     int id;     
-    int mole;   //pkg mole(masa)
+    int weight;  //used to calculate time to move it form side to side
     int type;   
 } package_t;
 
@@ -39,6 +39,15 @@ void pkg_init(package_t *pkg, int *pkg_counter);
 
 /*************************************************************
  * Description:
+ *      Create new packages
+ * Parameters:
+ * return:
+ *      Ptr to the array of new packages
+ * ***********************************************************/
+package_t* generate_pkgs(int *pkg_counter);
+
+/*************************************************************
+ * Description:
  *      Compute time to pass through
  * Parameters:
  *      pkg_mole -> 
@@ -46,5 +55,39 @@ void pkg_init(package_t *pkg, int *pkg_counter);
  *       Time to pass through the band
  * ***********************************************************/
 float compute_time(int pkg_mole);
+
+
+/*************************************************************
+ * Description:
+ *      Decides wich side the pkg will be assigned to
+ * Parameters:
+ *     
+ * return:
+ *      0 -> left
+ *      1 -> right
+ * ***********************************************************/
+int get_side();
+
+/*************************************************************
+ * Description:
+ *      Gets the number of packages to be generated based on a 
+ *      gaussian distribution
+ * Parameters:
+ *     
+ * return:
+ *      a number with the qntty to be generated 
+ * ***********************************************************/
+int get_qntty();
+
+
+/*************************************************************
+ * Description:
+ *      get random number (auxiliar)
+ * Parameters:
+ *      range: the top of the range for the return value
+ * return:
+ *      number between 0 and range
+ * ***********************************************************/
+int get_random(int range);
 
 #endif
