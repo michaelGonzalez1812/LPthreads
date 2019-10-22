@@ -19,7 +19,7 @@ void setup() {
   // Turn the Serial Protocol ON
   Serial.begin(9600);
 
-  for (int k= 9 ; k<18 ; k++){
+  for (int k= 10 ; k<18 ; k++){
      digitalWrite(k, LOW);   //Encendemos el punto
      digitalWrite(k, HIGH);  //Apagamos el punto
   }
@@ -35,8 +35,9 @@ void loop() {
     byte size = Serial.readBytes(input, INPUT_SIZE);
     // Add the final 0 to end the C string
     input[size] = 0;
-    
+                
     // Read each command pair 
+    Serial.println(input);
     char* command = strtok(input, "&");
     while (command != 0)
     {
