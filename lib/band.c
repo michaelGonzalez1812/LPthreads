@@ -11,7 +11,6 @@
  * ***********************************************************/
 
 #include <band.h>
-#include <package.h>
 
 void mov_package(package_t *pkg, int dir) {
     int pos = 0;
@@ -54,7 +53,7 @@ int do_in_background(void *arg) {
     while(band->on) {
         //TODO: choose when create pkgs
         new_pkgs = generate_pkgs(&pkg_counter);
-        printf("on background: new pkgs is %d\n", (sizeof(new_pkgs)/sizeof(*new_pkgs)));
+        
         //TODO: add new elements to the queue
         direction = get_dir(band);
         next_pkg = (direction == LEFT_TO_RIGHT) ? 

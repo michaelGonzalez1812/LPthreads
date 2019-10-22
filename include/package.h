@@ -12,9 +12,13 @@
  * ***********************************************************/
 
 #ifndef PACKAGE_H
-#define PACKAGE_H
+#define PACKAGE_H    int side = get_side();
 
+#include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+
 
 #define NORMAL_PKG 0
 #define URGENT_PKG 1
@@ -41,6 +45,7 @@ void pkg_init(package_t *pkg, int *pkg_counter);
  * Description:
  *      Create new packages
  * Parameters:
+ *      pkg_counter:keeps track of package quantity
  * return:
  *      Ptr to the array of new packages
  * ***********************************************************/
@@ -50,11 +55,11 @@ package_t* generate_pkgs(int *pkg_counter);
  * Description:
  *      Compute time to pass through
  * Parameters:
- *      pkg_mole -> 
+ *      pkg_weight -> weight of the package
  * return:
  *       Time to pass through the band
  * ***********************************************************/
-float compute_time(int pkg_mole);
+float compute_time(int pkg_weight);
 
 
 /*************************************************************

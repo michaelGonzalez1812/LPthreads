@@ -15,8 +15,8 @@
 #define BAND_H
 
 #include <scheduler.h>
-
 #include <package.h>
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
