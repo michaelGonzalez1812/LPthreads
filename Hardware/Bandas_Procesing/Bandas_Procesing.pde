@@ -48,10 +48,10 @@ void draw() {
        /*The following switch prevents continuous reading of the text file, until
        we are ready to read the file again. */
        mySwitch=0;
-       delay(200);
+       delay(1000);
      }else{
        //If the text file has run out of numbers, then read the text file again in 5 seconds.
-       delay(500);
+       delay(1000);
        mySwitch=1;
      }
   //}
