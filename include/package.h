@@ -24,6 +24,9 @@
 #define URGENT_PKG 1
 #define RADIOACTIVE_PKG 2
 
+#define LEFT_PKG_SIDE 0
+#define RIGHT_PKG_SIDE 1
+
 typedef struct {
     int id;     
     int weight;  //used to calculate time to move it form side to side
@@ -39,19 +42,9 @@ typedef struct {
  *       0 -> success
  *      -1 -> error
  * ***********************************************************/
-void pkg_init(package_t *pkg, int *pkg_counter);
+void pkg_init(package_t *pkg, int *pkg_id_counter);
 
-/*************************************************************
- * Description:
- *      Create new packages using a probability distribution for 
- *      how many packages will be created
- * Parameters:
- *      pkg_counter:keeps track of package quantity
- * return:
- *      Ptr to the array of new packages
- *      size of the resulting array
- * ***********************************************************/
-package_t* generate_pkgs(int *pkg_counter, int *size);
+
 
 /*************************************************************
  * Description:
@@ -70,8 +63,8 @@ float compute_time(int pkg_weight);
  * Parameters:
  *     
  * return:
- *      0 -> left
- *      1 -> right
+ *      0 -> LEFT_PKG_SIDE
+ *      1 -> RIGHT_PKG_SIDE
  * ***********************************************************/
 int get_side();
 
@@ -86,15 +79,5 @@ int get_side();
  * ***********************************************************/
 int get_qntty();
 
-
-/*************************************************************
- * Description:
- *      get random number (auxiliar)
- * Parameters:
- *      range: the top of the range for the return value
- * return:
- *      number between 0 and range
- * ***********************************************************/
-int get_random(int range);
 
 #endif

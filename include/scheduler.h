@@ -24,33 +24,31 @@
 #define FIFO_SCHE        3
 #define RT_SCHE          4   //Real time
 
-typedef struct {
-    int count;
-    int size;
-    //must be the ready queue
-    package_t *queue_begin;
-} queue_t;
-
-
-
 /*************************************************************
  * Description:
- *      Initialize the queue
- * Parameters:
- *      queue to be initialized
- * ***********************************************************/
-void queue_init(queue_t *queue, int count, int size);
-
-
-
-/*************************************************************
- * Description:
- *      Ask for a package given a specific type of schedualer
- * Parameters:
- *      
+ *      Select the next pkg to be processes depending on the 
+ *      sche type
+ * 
+ * parameters:
+ *      queue -> array with elements
+ *      queue_count -> Quanty elements in the array
+ *      sche -> Scheduler policy
+ *      itm_index (return too) -> itm pos in the array
+ * 
  * return:
- *      the requested package
+ *      ptr to the elemente Selected
  * ***********************************************************/
-package_t* get_next_item(queue_t *queue, int sche);
+package_t* get_next_item(package_t *queue, int *queue_count, int sche);
+
+
+package_t* round_robin_sche(package_t *queue, int queue_count, int *itm_index);
+
+package_t* sjf_sche(package_t *queue, int queue_count, int *itm_index);
+
+package_t* fifo_sche(package_t *queue, int queue_count, int *itm_index);
+
+package_t* rt_sche(package_t *queue, int queue_count, int *itm_index);
+
+void rmv_pkg(int itm_index, package_t *queue, int queue_count);
 
 #endif

@@ -48,7 +48,7 @@
 
 
 
-#define INITIAL_queue_SIZE 20
+#define INITIAL_QUEUE_SIZE 20
 
 typedef struct
 {
@@ -58,6 +58,9 @@ typedef struct
     //queue larger
     package_t *left_pkgs_queue;
     package_t *right_pkgs_queue;
+    
+    int left_pkgs_size;
+    int right_pkgs_size;
     //# of pkgs in ready queue
     int left_pkgs_count;
     int right_pkgs_count;
@@ -89,16 +92,19 @@ int do_in_background(void *arg);
 
 /*************************************************************
  * Description:
- *      Add packages to the queue
+ *      Create new packages using a probability distribution for 
+ *      how many packages will be created
+ *      
+ *      If the new quantity pks if greater than space in queue
+ *      it creates the same quantity than INITIAL_QUEUE_SIZE more spaces
  * Parameters:
- *      Pointer to array of packages to be added
- *      Amount of packages to be added
- *      Side to add the packages
- *      band to add the packages
+ *      pkg_counter:keeps track of package quantity
+ * return:
+ *      Ptr to the array of new packages
+ *      size of the resulting array
  * ***********************************************************/
-void add_packages(package_t *new_pkgs, int amount, int side, band_t *band);
-
-
+void generate_pkgs(int *pkg_id_counter, int *pkgs_count, 
+                         package_t* pkgs_queue, int* pkgs_size);
 
 /*************************************************************
  * Description:
@@ -118,17 +124,6 @@ void turn_off_band(band_t *pkg);
  * return:
  * ***********************************************************/
 void band_init(band_t *band, int sche, int *bands_count);
-
-/*************************************************************
- * Description:
- *      get direction to move the pkg
- * Parameters:
- *      
- * return:
- *      0 -> LEFT_TO_RIGHT
- *      1 -> RIGHT_TO_LEFT
- * ***********************************************************/
-int get_dir(band_t *band);
 
 /*************************************************************
  * Description:
