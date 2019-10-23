@@ -31,6 +31,26 @@ typedef struct {
     package_t *queue_begin;
 } queue_t;
 
+
+
+/*************************************************************
+ * Description:
+ *      Initialize the queue
+ * Parameters:
+ *      queue to be initialized
+ * ***********************************************************/
+void queue_init(queue_t *queue, int count, int size);
+
+
+
+/*************************************************************
+ * Description:
+ *      Ask for a package given a specific type of schedualer
+ * Parameters:
+ *      
+ * return:
+ *      the requested package
+ * ***********************************************************/
 package_t* get_next_item(queue_t *queue, int sche);
 
 #endif

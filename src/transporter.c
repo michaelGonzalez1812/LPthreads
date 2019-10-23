@@ -17,7 +17,7 @@
 #define NUM_BANDS 3
 
 int main(int argc, char** argv) {
-
+    srand(time(0));
     // printf("init...\n");
     
     // band_t *bands = malloc(3*sizeof(band_t));

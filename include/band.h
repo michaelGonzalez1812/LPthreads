@@ -20,6 +20,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
 
 /***********************************
  * Direction to move packages
@@ -54,8 +56,8 @@ typedef struct
     int sche_type;
     //TODO: if is necesary a method to make the 
     //queue larger
-    queue_t *left_pkgs_queue;
-    queue_t *right_pkgs_queue;
+    package_t *left_pkgs_queue;
+    package_t *right_pkgs_queue;
     //# of pkgs in ready queue
     int left_pkgs_count;
     int right_pkgs_count;
@@ -84,6 +86,19 @@ void mov_package(package_t *pkg, int dir);
  *      -1 -> error
  * ***********************************************************/
 int do_in_background(void *arg);
+
+/*************************************************************
+ * Description:
+ *      Add packages to the queue
+ * Parameters:
+ *      Pointer to array of packages to be added
+ *      Amount of packages to be added
+ *      Side to add the packages
+ *      band to add the packages
+ * ***********************************************************/
+void add_packages(package_t *new_pkgs, int amount, int side, band_t *band);
+
+
 
 /*************************************************************
  * Description:

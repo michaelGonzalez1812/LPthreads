@@ -23,7 +23,7 @@ void pkg_init(package_t *pkg, int *pkg_counter) {
     while (flag){
         int temp_wght = get_random(10);
         if (temp_wght!= 0){
-            pkg -> weight = 0;
+            pkg -> weight = temp_wght;
             flag = 0;
         }
     }
@@ -40,25 +40,28 @@ float compute_time(int pkg_weight) {
 }
 
 
-package_t* generate_pkgs(int *pkg_counter){
+package_t* generate_pkgs(int *pkg_counter, int *size){
     //TODO: to be finished
-    
-    int side = get_side();
+    srand(time(0));
     int qntty = get_qntty();
+    *size = qntty;
     printf("on gen package: quantity is %d\n", qntty);
+    if (qntty==0) { return NULL; }
+   
 
     package_t *result = malloc(qntty*sizeof(package_t));
     //Loop to create the defined amount of packages
+    
     for (int i =0; i< qntty;i++){
         pkg_init(&result[i], pkg_counter);
-        // printf("on gen package: result[%d].id is %d\n", i,result[i].id);
     }
     return result;
 }
 
 int get_side(){
+    srand(time(0));
     int side = get_random(2);
-
+    return side;
 }
 
 int get_qntty(){
@@ -69,13 +72,12 @@ int get_qntty(){
     
     int index = get_random((sizeof(arr)/sizeof(*arr)));
     int qntty = arr[index];
-    
+    return qntty;
 }
 
 
 
 int get_random(int range){
-    srand(time(NULL));
     int r = rand() % range;
     return r;
 }

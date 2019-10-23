@@ -43,13 +43,15 @@ void pkg_init(package_t *pkg, int *pkg_counter);
 
 /*************************************************************
  * Description:
- *      Create new packages
+ *      Create new packages using a probability distribution for 
+ *      how many packages will be created
  * Parameters:
  *      pkg_counter:keeps track of package quantity
  * return:
  *      Ptr to the array of new packages
+ *      size of the resulting array
  * ***********************************************************/
-package_t* generate_pkgs(int *pkg_counter);
+package_t* generate_pkgs(int *pkg_counter, int *size);
 
 /*************************************************************
  * Description:
