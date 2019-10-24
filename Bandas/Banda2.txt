@@ -1,5 +1,0 @@
-<<<<<<< Updated upstream
-=======
-#tipo,posicion,
-2,4
->>>>>>> Stashed changes

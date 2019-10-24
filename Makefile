@@ -14,6 +14,10 @@ Phony: clean
 clean:
 	rm lib/*.a lib/*.o bin/*
 
+Phony: run
+run:
+	valgrind ./bin/transporter
+
 Phony: clean_unit_test
 clean_unit_test:
 	rm unit-test/build/*	
