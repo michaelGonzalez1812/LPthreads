@@ -16,27 +16,39 @@
 #include <package.h>
 #include <scheduler.h>
 #include <file_read.h>
+#include <string.h>
 
 #define NUM_BANDS 3
 
 int main(int argc, char** argv) {
-    srand(time(0));
-    // printf("init...\n");
+    /*
+    int band_id = 1;
+    char filename[100] = "Bandas/Banda";
+    char filenumber[10];
+    sprintf(filenumber, "%d", band_id);
+    strcat(filename, filenumber);
+    strcat(filename, ".txt");
+    printf("************************\n");
+    printf("filename: %s", filename);
+    printf("************************\n");
+*/
     
-    // band_t *bands = malloc(3*sizeof(band_t));
-    // int thread_ids[NUM_BANDS];
-    // int bands_count = 0;
+    srand(time(0));
+    printf("init...\n");
+    
+    band_t *bands = (band_t*) malloc(NUM_BANDS*sizeof(band_t));
+    int thread_ids[NUM_BANDS];
+    int bands_count = 0;
 
-    // for (int i = 0; i <= NUM_BANDS; i++) {
-    //     band_init(&bands[i], FIFO_SCHE, &bands_count);
-    //     // printf("on transporter: Band sche is %d\n", &bands[i]->sche_type);
-    //     thread_ids[i] = lpthread_create(do_in_background, (char*) &bands[i]);
-    // }
+    for (int i = 0; i < NUM_BANDS; i++) {
+        band_init(&bands[i], FIFO_SCHE, &bands_count);
+        thread_ids[i] = lpthread_create(do_in_background, (char*) &bands[i]);
+    }
 
-    // for (int i = 0; i <= NUM_BANDS; i++)
-    //     lpthread_join(thread_ids[i]);
+    for (int i = 0; i <= NUM_BANDS; i++)
+        lpthread_join(thread_ids[i]);
 
-    // printf("exiting...\n\n");
+    printf("exiting...\n\n");
     
 /*
     band_t *band1_ptr = malloc(sizeof(band_t));
@@ -50,11 +62,12 @@ int main(int argc, char** argv) {
 
     printf("exiting...\n\n");
 */
-
+/*
     band_t band;
     int bands_count = 0;
     band_init(&band, FIFO_SCHE, &bands_count);
     do_in_background((void*) &band);
+  */  
 /*
     package_t p1;
     package_t p2;

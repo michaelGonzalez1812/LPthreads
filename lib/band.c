@@ -12,12 +12,20 @@
 
 #include <band.h>
 
-void mov_package(package_t *pkg, int dir) {
+void mov_package(package_t *pkg, int dir, int band_id) {
     
     int pos = (dir == LEFT_TO_RIGHT) ? 1 : 8;
-    
+    char filename[100] = "Bandas/Banda";
+    char filenumber[10];
+    sprintf(filenumber, "%d", band_id);
+    strcat(filename, filenumber);
+    strcat(filename, ".txt");
+    printf("************************\n");
+    printf("filename: %s", filename);
+    printf("************************\n");
+
     printf("moving package %d\n", pkg->id);
-    update_file("Bandas/Banda0", pos, pkg->type);
+    update_file(filename, pos, pkg->type);
     
     int time = compute_time(pkg->weight);
     time /= 8;
@@ -28,9 +36,8 @@ void mov_package(package_t *pkg, int dir) {
         else
             pos--;
         
-        update_file("Bandas/Banda0", pos, pkg->type);
+        update_file(filename, pos, pkg->type);
     }
-    //TODO: cuando termina elimina paquete
 }
 
 
@@ -69,7 +76,7 @@ int do_in_background(void *arg) {
         if (direction == LEFT_TO_RIGHT) band->left_pkgs_count--;
         else band->right_pkgs_count--;
     
-        mov_package(next_pkg, direction);
+        mov_package(next_pkg, direction, band->id);
     }
 
     return 0;
@@ -107,8 +114,8 @@ void band_init(band_t *band, int sche, int *bands_count) {
     band -> id = *bands_count;
     (*bands_count)++;
     band -> sche_type = sche;
-    band -> left_pkgs_queue = malloc(INITIAL_QUEUE_SIZE*sizeof(package_t));
-    band -> right_pkgs_queue = malloc(INITIAL_QUEUE_SIZE*sizeof(package_t));
+    band -> left_pkgs_queue = (package_t*) malloc(INITIAL_QUEUE_SIZE*sizeof(package_t));
+    band -> right_pkgs_queue = (package_t*) malloc(INITIAL_QUEUE_SIZE*sizeof(package_t));
     band -> left_pkgs_count = 0;
     band -> right_pkgs_count = 0;
     band -> on = false;

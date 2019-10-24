@@ -23,10 +23,12 @@ package_t* get_next_item(package_t *queue, int *queue_count, int sche) {
         (sche == PRIORIRY_SCHE)    ? priority_sche(queue, *queue_count, &itm_index)        : 
                                      rt_sche(queue, *queue_count, &itm_index);
 
+    package_t *selected_pkg = (package_t*) malloc(sizeof(package_t));
+    *selected_pkg = *result;
     rmv_pkg(itm_index, queue, *queue_count);
 
     (*queue_count)--;
-    return result;
+    return selected_pkg;
 }
 
 package_t* round_robin_sche(package_t *queue, int queue_count, int *itm_index) {

@@ -22,6 +22,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 /***********************************
  * Direction to move packages
@@ -77,7 +78,7 @@ typedef struct
  *      dir -> Direction to move the pkg
  * return:
  * ***********************************************************/
-void mov_package(package_t *pkg, int dir);
+void mov_package(package_t *pkg, int dir, int band_id);
 
 
 /*************************************************************
