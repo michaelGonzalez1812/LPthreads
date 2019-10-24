@@ -1,3 +1,8 @@
-hola
-1,2,3,4,5
-mundo
+flux_control:0
+strenght:10
+lenght:8
+probability:0
+sing_time:3
+w:5
+radioactive:0.2
+urgent:0.01
