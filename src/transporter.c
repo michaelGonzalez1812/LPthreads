@@ -15,6 +15,7 @@
 #include <band.h>
 #include <package.h>
 #include <scheduler.h>
+#include <file_read.h>
 
 #define NUM_BANDS 3
 
@@ -120,27 +121,27 @@ int main(int argc, char** argv) {
 
     int queue_count = 12;
 
-    package_t* result;
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 0);
-    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // package_t* result;
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    // result = get_next_item(queue, &queue_count, 0);
+    // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
     
     // for(int i=0;i < 12; i++){
     //     int id = queue[i].id;
@@ -150,6 +151,13 @@ int main(int argc, char** argv) {
     //     printf("Pkg id: %d wght: %d type: %d\n",id,wght,type);
     // }
 
+
+
+    // const char *filename =  "../config/test.txt";
+    
+    // parameters_t *parameters = malloc(sizeof(parameters));
+
+    // read_file(filename, parameters_t &parameters);
 
     return 0;
 }

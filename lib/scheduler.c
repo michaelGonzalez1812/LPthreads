@@ -30,7 +30,7 @@ package_t* get_next_item(package_t *queue, int *queue_count, int sche) {
 }
 
 package_t* round_robin_sche(package_t *queue, int queue_count, int *itm_index) {
-    srand(time(0));
+    // srand(time(0));
     int index = rand() % queue_count;
     *itm_index = index;
     return &queue[index];
