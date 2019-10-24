@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
     printf("filename: %s", filename);
     printf("************************\n");
 */
-    
+    /*
     srand(time(0));
     printf("init...\n");
     
@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
         lpthread_join(thread_ids[i]);
 
     printf("exiting...\n\n");
-    
+    */
 /*
     band_t *band1_ptr = malloc(sizeof(band_t));
     int thread_id;
@@ -62,12 +62,12 @@ int main(int argc, char** argv) {
 
     printf("exiting...\n\n");
 */
-/*
+
     band_t band;
     int bands_count = 0;
     band_init(&band, FIFO_SCHE, &bands_count);
     do_in_background((void*) &band);
-  */  
+  
 /*
     package_t p1;
     package_t p2;

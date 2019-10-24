@@ -49,7 +49,7 @@
 
 
 
-#define INITIAL_QUEUE_SIZE 20
+#define INITIAL_QUEUE_SIZE 200
 
 typedef struct
 {
