@@ -22,10 +22,10 @@ package_t* get_next_item(package_t *queue, int *queue_count, int sche) {
         (sche == FIFO_SCHE)        ? fifo_sche(queue, *queue_count, &itm_index)        : 
         (sche == PRIORIRY_SCHE)    ? priority_sche(queue, *queue_count, &itm_index)        : 
                                      rt_sche(queue, *queue_count, &itm_index);
-    printf("next is %d \n",result->id);
+
     rmv_pkg(itm_index, queue, *queue_count);
-    printf("next is %d \n",result->id);
-    *queue_count--;
+
+    (*queue_count)--;
     return result;
 }
 
@@ -100,8 +100,6 @@ package_t* rt_sche(package_t *queue, int queue_count, int *itm_index) {
 }
 
 void rmv_pkg(int itm_index, package_t *queue, int queue_count) {
-    printf("removing %d \n", queue[itm_index].id);
-    for (int i = itm_index; i < queue_count-1 ; i++){
-        queue[i]=queue[i+1];
-    }
+    for (int i = itm_index; i < queue_count-1 ; i++)
+        queue[i] = queue[i+1];
 }

@@ -41,12 +41,9 @@ int do_in_background(void *arg) {
         return -1;
     }
     band_t *band = (band_t*) arg;
-    
-    // List of new pkgs 
-    package_t *queue_selected;
+
     //next pkg to move
     package_t *next_pkg;
-    int next_pkg_index;
     int pkg_id_counter = 0;
     
     int direction;// flux for the packages
@@ -80,7 +77,6 @@ int do_in_background(void *arg) {
 
 void generate_pkgs(int *pkg_id_counter, int *pkgs_count, 
                          package_t* pkgs_queue, int* pkgs_size) {
-    printf("Hi/n");
     srand(time(0)); //init random
     int qntty = get_qntty();
     
@@ -98,8 +94,8 @@ void generate_pkgs(int *pkg_id_counter, int *pkgs_count,
         *pkgs_size += INITIAL_QUEUE_SIZE;
     }
         
-    for (int i = *pkgs_count; i < *pkgs_count + qntty; i++)
-        pkg_init(&pkgs_queue[i], pkg_id_counter++);
+    for (int i = *pkgs_count; i < *pkgs_count + qntty; i++) 
+        pkg_init(&pkgs_queue[i], pkg_id_counter);
 
     *pkgs_count += qntty;
 }
@@ -109,7 +105,7 @@ void turn_off_band(band_t *band) { band->on = false; }
 void band_init(band_t *band, int sche, int *bands_count) {
     
     band -> id = *bands_count;
-    *bands_count++;
+    (*bands_count)++;
     band -> sche_type = sche;
     band -> left_pkgs_queue = malloc(INITIAL_QUEUE_SIZE*sizeof(package_t));
     band -> right_pkgs_queue = malloc(INITIAL_QUEUE_SIZE*sizeof(package_t));

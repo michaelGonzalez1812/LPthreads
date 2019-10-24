@@ -51,11 +51,11 @@ int main(int argc, char** argv) {
     printf("exiting...\n\n");
 */
 
-    // band_t band;
-    // int bands_count = 0;
-    // band_init(&band, FIFO_SCHE, &bands_count);
-    // do_in_background((void*) &band);
-
+    band_t band;
+    int bands_count = 0;
+    band_init(&band, FIFO_SCHE, &bands_count);
+    do_in_background((void*) &band);
+/*
     package_t p1;
     package_t p2;
     package_t p3;
@@ -120,7 +120,7 @@ int main(int argc, char** argv) {
     package_t queue[] = {p12,p2,p1,p3,p4,p5,p6,p7,p8,p9,p10,p11};
 
     int queue_count = 12;
-
+*/
     // package_t* result;
     // result = get_next_item(queue, &queue_count, 0);
     // printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);

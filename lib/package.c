@@ -14,7 +14,7 @@
 
 void pkg_init(package_t *pkg, int *pkg_id_counter) {
     pkg -> id = *pkg_id_counter;
-    *pkg_id_counter++;
+    (*pkg_id_counter)++;
     //avoid a weight of zero
     int flag = 1;
     int temp_wght;
