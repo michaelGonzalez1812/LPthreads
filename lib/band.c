@@ -80,7 +80,7 @@ int do_in_background(void *arg) {
 
 void generate_pkgs(int *pkg_id_counter, int *pkgs_count, 
                          package_t* pkgs_queue, int* pkgs_size) {
-
+    printf("Hi/n");
     srand(time(0)); //init random
     int qntty = get_qntty();
     

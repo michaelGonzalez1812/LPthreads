@@ -26,7 +26,7 @@
 
 /*************************************************************
  * Description:
- *      Select the next pkg to be processes depending on the 
+ *      Select the next pkg to be processed depending on the 
  *      sche type
  * 
  * parameters:
@@ -49,6 +49,17 @@ package_t* fifo_sche(package_t *queue, int queue_count, int *itm_index);
 
 package_t* rt_sche(package_t *queue, int queue_count, int *itm_index);
 
+
+
+/*************************************************************
+ * Description:
+ *      Delete a package from the queue
+ * 
+ * parameters:
+ *      itm_index -> position to be deleted
+ *      queue ->   list to delete the package from
+ *      queue_count -> Quanty elements in the list  
+ * ***********************************************************/
 void rmv_pkg(int itm_index, package_t *queue, int queue_count);
 
 #endif
