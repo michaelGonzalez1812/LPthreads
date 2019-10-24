@@ -50,7 +50,7 @@ int do_in_background(void *arg) {
     int pkg_id_counter = 0;
     
     int direction;// flux for the packages
-    int side; //wich side of the band will the packages go
+    int side; //wich side of the band will the packages go when created
     band->on = true;
     printf("Band %d working!\n", band->id);
 

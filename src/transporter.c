@@ -121,11 +121,25 @@ int main(int argc, char** argv) {
     int queue_count = 12;
 
     package_t* result;
-    result = get_next_item(queue, &queue_count, 3);
+    result = get_next_item(queue, &queue_count, 0);
     printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 3);
+    result = get_next_item(queue, &queue_count, 0);
     printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
-    result = get_next_item(queue, &queue_count, 3);
+    result = get_next_item(queue, &queue_count, 0);
+    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    result = get_next_item(queue, &queue_count, 0);
+    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    result = get_next_item(queue, &queue_count, 0);
+    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    result = get_next_item(queue, &queue_count, 0);
+    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    result = get_next_item(queue, &queue_count, 0);
+    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    result = get_next_item(queue, &queue_count, 0);
+    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    result = get_next_item(queue, &queue_count, 0);
+    printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
+    result = get_next_item(queue, &queue_count, 0);
     printf("Pkg id: %d wght: %d type: %d\n",result->id,result->weight,result->type);
     
     // for(int i=0;i < 12; i++){

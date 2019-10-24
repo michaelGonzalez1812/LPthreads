@@ -49,7 +49,7 @@ package_t* fifo_sche(package_t *queue, int queue_count, int *itm_index);
 
 package_t* rt_sche(package_t *queue, int queue_count, int *itm_index);
 
-
+package_t* priority_sche(package_t *queue, int queue_count, int *itm_index);
 
 /*************************************************************
  * Description:

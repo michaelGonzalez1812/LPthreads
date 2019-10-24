@@ -22,8 +22,9 @@ package_t* get_next_item(package_t *queue, int *queue_count, int sche) {
         (sche == FIFO_SCHE)        ? fifo_sche(queue, *queue_count, &itm_index)        : 
         (sche == PRIORIRY_SCHE)    ? priority_sche(queue, *queue_count, &itm_index)        : 
                                      rt_sche(queue, *queue_count, &itm_index);
-
+    printf("next is %d \n",result->id);
     rmv_pkg(itm_index, queue, *queue_count);
+    printf("next is %d \n",result->id);
     *queue_count--;
     return result;
 }
@@ -52,14 +53,46 @@ package_t* fifo_sche(package_t *queue, int queue_count, int *itm_index) {
 }
 
 package_t* priority_sche(package_t *queue, int queue_count, int *itm_index) {
-    int current_prior = 0;//index of the highest priority
-    for(int i=0;i<queue_count;i++){
-        if (queue[current_short].type > queue[i].type){
-            current_short = i;
+    printf("enter prio\n");
+    int high_prior_indx = 0;//index of the highest priority
+    int med_prior_indx = 0;//index of the medium priority
+    int low_prior_indx = 0;//index of the low priority
+    
+    int priority_found=0;//indicates the highest level of priority found
+
+    for(int i=0;i<queue_count;i++){//check for pkgs with lowes priority
+        if (queue[i].type == 0 && priority_found==0){
+            printf("enter low\n");
+            low_prior_indx = i;
+            continue;
+        }
+        if (queue[i].type == 1){//check for pkgs with medium priority
+            printf("enter med\n");
+            med_prior_indx = i;
+            priority_found = 1;//overwites found priority
+            continue;
+        }
+        if (queue[i].type == 2){//check for pkgs with highest priority
+            printf("enter high\n");
+            high_prior_indx = i;
+            priority_found = 2;
+            break;//if highest priority is found, no need to keep checking
         }
     }
-    *itm_index = current_short;
-    return &queue[current_short];
+
+    if (priority_found==2){
+        printf("return prio high\n");
+        *itm_index = high_prior_indx;
+        return &queue[high_prior_indx];
+    }
+     if (priority_found==1){
+          printf("return prio mid\n");
+        *itm_index = med_prior_indx;
+        return &queue[med_prior_indx];
+    }
+     printf("return prio low\n");
+    *itm_index = low_prior_indx;
+    return &queue[low_prior_indx];
 }
 
 package_t* rt_sche(package_t *queue, int queue_count, int *itm_index) {
@@ -67,6 +100,7 @@ package_t* rt_sche(package_t *queue, int queue_count, int *itm_index) {
 }
 
 void rmv_pkg(int itm_index, package_t *queue, int queue_count) {
+    printf("removing %d \n", queue[itm_index].id);
     for (int i = itm_index; i < queue_count-1 ; i++){
         queue[i]=queue[i+1];
     }
