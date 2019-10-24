@@ -68,17 +68,20 @@ def movement(canvas):
     
 def read_file(filename):
     #lectura del archivo
+    tipo = 0
+    posicion = 1
+    try:
         f = open(filename, "r")
-        f.readline()
 
         # get de los valores [tipo,posicion]
         values = (f.readline()).split(",")
         tipo = int(values[0])
         posicion = (int(values[1]))*50
-
+    except:
+        print("Miss read")
         #cerrar el archivo
-        f.close()
-        return [tipo,posicion]
+    f.close()
+    return [tipo,posicion]
 
 def crearRect(tipo, canvasTemp):
     if(tipo == 0):

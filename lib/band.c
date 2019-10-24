@@ -17,7 +17,7 @@ void mov_package(package_t *pkg, int dir) {
     int pos = (dir == LEFT_TO_RIGHT) ? 1 : 8;
     
     printf("moving package %d\n", pkg->id);
-    update_file("Bandas/Banda0", pos, pkg->type);
+    update_file("Bandas/Banda0.txt", pos, pkg->type);
     
     int time = compute_time(pkg->weight);
     time /= 8;
@@ -28,7 +28,7 @@ void mov_package(package_t *pkg, int dir) {
         else
             pos--;
         
-        update_file("Bandas/Banda0", pos, pkg->type);
+        update_file("Bandas/Banda0.txt", pos, pkg->type);
     }
     //TODO: cuando termina elimina paquete
 }
