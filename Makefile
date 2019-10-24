@@ -10,6 +10,10 @@ Phony: lpthread_unit_test
 lpthread_unit_test: compile-lib
 	make -f unit-test/lpthread/Makefile
 
+Phony: scheduler_unit_test	
+scheduler_unit_test: compile-lib
+	make -f unit-test/scheduler/Makefile	
+
 Phony: clean
 clean:
 	rm lib/*.a lib/*.o bin/*
