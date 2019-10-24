@@ -79,7 +79,7 @@ void loop() {
                 //turn off next
                 digitalWrite((position+10), HIGH);
               }
-              if(type == 1){
+              else if(type == 1){
                 //turn off previous 
                 digitalWrite(9, LOW);     //apagamos la columna 1
                 digitalWrite((position+8), HIGH);
@@ -89,7 +89,7 @@ void loop() {
                 //turn off next
                 digitalWrite((position+10), HIGH);
               }
-              else{
+              else if(type == 2){
                 //turn off previous 
                 digitalWrite((position+8), HIGH);
                 //turn on
@@ -111,7 +111,7 @@ void loop() {
                 //turn off next
                 digitalWrite((position+10), HIGH);
               }
-              if(type == 1){
+              else if(type == 1){
                 //turn off previous 
                 digitalWrite(6, LOW);     //apagamos la columna 1
                 digitalWrite((position+8), HIGH);
@@ -121,7 +121,7 @@ void loop() {
                 //turn off next
                 digitalWrite((position+10), HIGH);
               }
-              else{
+              else if(type == 2){
                 //turn off previous 
                 digitalWrite((position+8), HIGH);
                 //turn on
@@ -132,7 +132,7 @@ void loop() {
                 digitalWrite((position+10), HIGH);
               }
            }
-           else{
+           else if(bandId == 2){
                 if(type == 0){
                 //turn off previous 
                 digitalWrite(2, LOW);     //apagamos la columna 2
@@ -143,7 +143,7 @@ void loop() {
                 //turn off next
                 digitalWrite((position+10), HIGH);
               }
-              if(type == 1){
+              else if(type == 1){
                 //turn off previous 
                 digitalWrite(3, LOW);     //apagamos la columna 1
                 digitalWrite((position+8), HIGH);
@@ -153,7 +153,7 @@ void loop() {
                 //turn off next
                 digitalWrite((position+10), HIGH);
               }
-              else{
+              else if(type == 2){
                 //turn off previous 
                 digitalWrite((position+8), HIGH);
                 //turn on
