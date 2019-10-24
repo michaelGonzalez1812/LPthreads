@@ -12,9 +12,6 @@
 
 #include <package.h>
 
-
-
-
 void pkg_init(package_t *pkg, int *pkg_id_counter) {
     pkg -> id = *pkg_id_counter;
     *pkg_id_counter++;
@@ -39,7 +36,7 @@ float compute_time(int pkg_weight) {
 
     //TODO: not implemented yet
     
-    return 0;
+    return 16;
 }
 
 int get_side(){
