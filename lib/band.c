@@ -13,18 +13,18 @@
 #include <band.h>
 
 void mov_package(package_t *pkg, int dir) {
-    int pos = 0;
-    if (dir == 1){
-        pos = 1;
-    }
     
-    update_file(pkg->id, pos, pkg->type);
+    int pos = (dir == LEFT_TO_RIGHT) ? 0 : 7;
+    
+    update_file("../Bandas/Banda0", pos, pkg->type);
+    
     int time = compute_time(pkg->weight);
     time /= 8;
+    printf("moving package %d\n", pkg->id);
     while (pos < 8) {
         sleep(time);
         pos++;
-        update_file(pkg->id, pos, pkg->id);
+        update_file("../Bandas/Banda0", pos, pkg->type);
     }
     //TODO: cuando termina elimina paquete
 }
@@ -118,9 +118,11 @@ void band_init(band_t *band, int sche, int *bands_count) {
     // printf("on init: Band sche is %d\n", band->sche_type);
 }
 
-int update_file(int pkg_id, int pos, int pkg_type) {
-    printf("Performing movement of package %d of type %d to %d  \n", pkg_id, pos, pkg_type);
-    //TODO: not implemented yet
-
+int update_file(char *file, int pos, int pkg_type) {
+    
+    FILE * fp = fopen (file, "w");
+    printf("%d,%d\n", pkg_type, pos);
+    fprintf (fp, "%d,%d\n", pkg_type, pos);
+    fclose (fp);
     return 0;
 }

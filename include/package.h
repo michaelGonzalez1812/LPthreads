@@ -44,8 +44,6 @@ typedef struct {
  * ***********************************************************/
 void pkg_init(package_t *pkg, int *pkg_id_counter);
 
-
-
 /*************************************************************
  * Description:
  *      Compute time to pass through

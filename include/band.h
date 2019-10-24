@@ -136,6 +136,6 @@ void band_init(band_t *band, int sche, int *bands_count);
  *       0 -> success
  *      -1 -> error
  * ***********************************************************/
-int update_file(int pkg_id, int pos, int pkg_type);
+int update_file(char *file, int pos, int pkg_type);
 
 #endif

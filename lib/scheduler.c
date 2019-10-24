@@ -21,7 +21,8 @@ package_t* get_next_item(package_t *queue, int *queue_count, int sche) {
         (sche == FIFO_SCHE)        ? fifo_sche(queue, *queue_count, &itm_index)        : 
                                      rt_sche(queue, *queue_count, &itm_index);
 
-    rmv_pkg(itm_index, queue, *queue_count);
+    //not needed para fifo
+    //rmv_pkg(itm_index, queue, *queue_count);
     *queue_count--;
     return result;
 }
@@ -35,7 +36,8 @@ package_t* sjf_sche(package_t *queue, int queue_count, int *itm_index) {
 }
 
 package_t* fifo_sche(package_t *queue, int queue_count, int *itm_index) {
-
+    *itm_index = queue_count - 1;
+    return &queue[*itm_index]; 
 }
 
 package_t* rt_sche(package_t *queue, int queue_count, int *itm_index) {
