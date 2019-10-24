@@ -1,1 +1,6 @@
+<<<<<<< Updated upstream
 0,2
+=======
+#tipo,posicion,
+1,3
+>>>>>>> Stashed changes

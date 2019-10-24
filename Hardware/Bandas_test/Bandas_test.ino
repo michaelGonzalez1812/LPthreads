@@ -74,7 +74,7 @@ void loop() {
                 digitalWrite(9, HIGH);     //Levantamos la columna 1
                 digitalWrite((position+9), LOW); // set the LED on
                 //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(9, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
               }
@@ -83,7 +83,7 @@ void loop() {
                 digitalWrite(8, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
                //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(8, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
               }
@@ -93,7 +93,7 @@ void loop() {
                 digitalWrite(8, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
                 //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(8, LOW);     //Levantamos la columna 1
                 digitalWrite(9, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
@@ -106,7 +106,7 @@ void loop() {
                 digitalWrite(6, HIGH);     //Levantamos la columna 1
                 digitalWrite((position+9), LOW); // set the LED on
                 //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(6, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
               }
@@ -115,7 +115,7 @@ void loop() {
                 digitalWrite(5, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
                 //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(5, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
               }
@@ -124,7 +124,7 @@ void loop() {
                 digitalWrite(5, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
                 //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(5, LOW);     //Levantamos la columna 1
                 digitalWrite(6, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
@@ -136,7 +136,7 @@ void loop() {
                 digitalWrite(3, HIGH);     //Levantamos la columna 1
                 digitalWrite((position+9), LOW); // set the LED on
                 //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(3, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
               }
@@ -145,7 +145,7 @@ void loop() {
                 digitalWrite(2, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
                 //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(2, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
               }
@@ -155,7 +155,7 @@ void loop() {
                 digitalWrite(2, HIGH);     //Levantamos la columna 2
                 digitalWrite((position+9), LOW); // set the LED on
                 //turn off
-                delay(500);
+                delay(250);
                 digitalWrite(3, LOW);     //Levantamos la columna 1
                 digitalWrite(2, LOW);     //Levantamos la columna 1
                 digitalWrite((position+9), HIGH); // set the LED on
