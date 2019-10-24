@@ -55,7 +55,7 @@ package_t* fifo_sche(package_t *queue, int queue_count, int *itm_index) {
 }
 
 package_t* priority_sche(package_t *queue, int queue_count, int *itm_index) {
-    printf("enter prio\n");
+    // printf("enter prio\n");
     int high_prior_indx = 0;//index of the highest priority
     int med_prior_indx = 0;//index of the medium priority
     int low_prior_indx = 0;//index of the low priority
@@ -64,18 +64,18 @@ package_t* priority_sche(package_t *queue, int queue_count, int *itm_index) {
 
     for(int i=0;i<queue_count;i++){//check for pkgs with lowes priority
         if (queue[i].type == 0 && priority_found==0){
-            printf("enter low\n");
+            // printf("enter low\n");
             low_prior_indx = i;
             continue;
         }
         if (queue[i].type == 1){//check for pkgs with medium priority
-            printf("enter med\n");
+            // printf("enter med\n");
             med_prior_indx = i;
             priority_found = 1;//overwites found priority
             continue;
         }
         if (queue[i].type == 2){//check for pkgs with highest priority
-            printf("enter high\n");
+            // printf("enter high\n");
             high_prior_indx = i;
             priority_found = 2;
             break;//if highest priority is found, no need to keep checking
@@ -83,16 +83,16 @@ package_t* priority_sche(package_t *queue, int queue_count, int *itm_index) {
     }
 
     if (priority_found==2){
-        printf("return prio high\n");
+        // printf("return prio high\n");
         *itm_index = high_prior_indx;
         return &queue[high_prior_indx];
     }
      if (priority_found==1){
-          printf("return prio mid\n");
+        // printf("return prio mid\n");
         *itm_index = med_prior_indx;
         return &queue[med_prior_indx];
     }
-     printf("return prio low\n");
+    // printf("return prio low\n");
     *itm_index = low_prior_indx;
     return &queue[low_prior_indx];
 }
